@@ -674,19 +674,24 @@ var prevRefreshSig = globalThis.$RefreshSig$;
 $parcel$ReactRefreshHelpers$ca65.prelude(module);
 
 try {
+/*import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(<App />);*/ // index.jsx
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
-var _app = require("./App");
+var _app = require("./App"); // Importen ska nu fungera
 var _appDefault = parcelHelpers.interopDefault(_app);
 const rootElement = document.getElementById("root");
-const root = (0, _client.createRoot)(rootElement);
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
+(0, _client.createRoot)(rootElement).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 8,
-    columnNumber: 13
+    lineNumber: 15,
+    columnNumber: 32
 }, undefined));
 
   $parcel$ReactRefreshHelpers$ca65.postlude(module);
@@ -694,7 +699,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-dom/client":"hrvwu","./App":"f8V2Q","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react-dom/client":"hrvwu","./App":"f8V2Q","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -16101,6 +16106,7 @@ var prevRefreshSig = globalThis.$RefreshSig$;
 $parcel$ReactRefreshHelpers$be2d.prelude(module);
 
 try {
+// App.jsx
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
@@ -16116,10 +16122,9 @@ var _stepIndicator = require("./components/StepIndicator");
 var _stepIndicatorDefault = parcelHelpers.interopDefault(_stepIndicator);
 var _bookingStep1 = require("./pages/BookingStep1");
 var _bookingStep1Default = parcelHelpers.interopDefault(_bookingStep1);
-var _bookingStep2 = require("./pages/BookingStep2"); // Om du har den
+var _bookingStep2 = require("./pages/BookingStep2");
 var _bookingStep2Default = parcelHelpers.interopDefault(_bookingStep2);
 var _s = $RefreshSig$();
-// Du kan lägga till fler steg senare
 function App() {
     _s();
     const [step, setStep] = (0, _react.useState)(1);
@@ -16167,7 +16172,7 @@ function App() {
                         onNext: goToNextStep
                     }, void 0, false, {
                         fileName: "src/App.jsx",
-                        lineNumber: 40,
+                        lineNumber: 39,
                         columnNumber: 11
                     }, this),
                     step === 2 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookingStep2Default.default), {
@@ -16177,7 +16182,7 @@ function App() {
                         onNext: goToNextStep
                     }, void 0, false, {
                         fileName: "src/App.jsx",
-                        lineNumber: 50,
+                        lineNumber: 49,
                         columnNumber: 11
                     }, this)
                 ]
@@ -16188,7 +16193,7 @@ function App() {
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                 fileName: "src/App.jsx",
-                lineNumber: 60,
+                lineNumber: 57,
                 columnNumber: 7
             }, this)
         ]
@@ -16205,7 +16210,7 @@ $RefreshReg$(_c, "App");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./components/Header":"8BCUx","./components/Footer":"lU1xT","./components/HeroImage":"gruAe","./components/StepIndicator":"6ldzK","./pages/BookingStep1":"hzJdA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./pages/BookingStep2":"iyPQ4"}],"8BCUx":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./components/Header":"8BCUx","./components/Footer":"lU1xT","./components/HeroImage":"gruAe","./components/StepIndicator":"6ldzK","./pages/BookingStep1":"hzJdA","./pages/BookingStep2":"iyPQ4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"8BCUx":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$bb7d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$bb7d.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -16246,7 +16251,7 @@ $RefreshReg$(_c, "Header");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../styles/header.css":"eyf1c","react/jsx-dev-runtime":"dVPUn"}],"jnFvT":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styles/header.css":"eyf1c","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"eyf1c":[function() {},{}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -18554,7 +18559,7 @@ function $da9882e673ac146b$var$ErrorOverlay() {
     return null;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"eyf1c":[function() {},{}],"lU1xT":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lU1xT":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$cfa1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$cfa1.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -18588,7 +18593,7 @@ $RefreshReg$(_c, "Footer");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../styles/footer.css":"kngAC"}],"kngAC":[function() {},{}],"gruAe":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styles/footer.css":"kngAC","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"kngAC":[function() {},{}],"gruAe":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$8cb1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$8cb1.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -18601,14 +18606,22 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _heroImageCss = require("../styles/heroImage.css"); // om du har css
 function HeroImage() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "hero-image",
-        children: "[H\xe4r kan du l\xe4gga till din hero-bild]"
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+            src: "https://images.pexels.com/photos/1027092/pexels-photo-1027092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            alt: "Hero"
+        }, void 0, false, {
+            fileName: "src/components/HeroImage.jsx",
+            lineNumber: 7,
+            columnNumber: 7
+        }, this)
     }, void 0, false, {
         fileName: "src/components/HeroImage.jsx",
-        lineNumber: 4,
-        columnNumber: 10
+        lineNumber: 6,
+        columnNumber: 5
     }, this);
 }
 _c = HeroImage;
@@ -18621,7 +18634,7 @@ $RefreshReg$(_c, "HeroImage");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"6ldzK":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styles/heroImage.css":"dUatm","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dUatm":[function() {},{}],"6ldzK":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$8f8f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$8f8f.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -18727,6 +18740,7 @@ const BookingStep1 = ({ treatment, hairdresser, onTreatmentChange, onHairdresser
     const [frisorer, setFrisorer] = (0, _react.useState)([]);
     const [loading, setLoading] = (0, _react.useState)(true);
     (0, _react.useEffect)(()=>{
+        // Hämta data för behandlingar och frisörer
         Promise.all([
             (0, _fetch.fetchBehandlingar)(),
             (0, _fetch.fetchFrisorer)()
@@ -18734,40 +18748,64 @@ const BookingStep1 = ({ treatment, hairdresser, onTreatmentChange, onHairdresser
             setBehandlingar(behandlingData || []);
             setFrisorer(frisorData || []);
             setLoading(false);
+        }).catch((error)=>{
+            console.error("Fel vid h\xe4mtning av data:", error);
+            setLoading(false);
         });
     }, []);
+    const handleTreatmentChange = (val)=>{
+        onTreatmentChange(val); // Uppdaterar treatment via onChange från parent
+    };
+    const handleHairdresserChange = (val)=>{
+        onHairdresserChange(val); // Uppdaterar frisör via onChange från parent
+    };
     if (loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "Laddar..."
     }, void 0, false, {
         fileName: "src/pages/BookingStep1.jsx",
-        lineNumber: 27,
-        columnNumber: 23
-    }, undefined);
+        lineNumber: 35,
+        columnNumber: 12
+    }, undefined); // Visas medan data laddas
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "booking-step-1",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                 children: "Bokningssteg 1"
             }, void 0, false, {
                 fileName: "src/pages/BookingStep1.jsx",
-                lineNumber: 31,
+                lineNumber: 40,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "V\xe4lj behandling"
+            }, void 0, false, {
+                fileName: "src/pages/BookingStep1.jsx",
+                lineNumber: 42,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _treatmentSelectorDefault.default), {
                 behandlingar: behandlingar,
                 selectedTreatment: treatment,
-                onChange: onTreatmentChange
+                onChange: handleTreatmentChange
             }, void 0, false, {
                 fileName: "src/pages/BookingStep1.jsx",
-                lineNumber: 33,
+                lineNumber: 43,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "V\xe4lj fris\xf6r"
+            }, void 0, false, {
+                fileName: "src/pages/BookingStep1.jsx",
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _hairdresserSelectorDefault.default), {
                 frisorer: frisorer,
                 selectedHairdresser: hairdresser,
-                onChange: onHairdresserChange
+                onChange: handleHairdresserChange
             }, void 0, false, {
                 fileName: "src/pages/BookingStep1.jsx",
-                lineNumber: 39,
+                lineNumber: 50,
                 columnNumber: 7
             }, undefined),
             treatment && hairdresser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _nextButtonDefault.default), {
@@ -18775,13 +18813,13 @@ const BookingStep1 = ({ treatment, hairdresser, onTreatmentChange, onHairdresser
                 label: "Forts\xe4tt"
             }, void 0, false, {
                 fileName: "src/pages/BookingStep1.jsx",
-                lineNumber: 46,
+                lineNumber: 58,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/pages/BookingStep1.jsx",
-        lineNumber: 30,
+        lineNumber: 39,
         columnNumber: 5
     }, undefined);
 };
@@ -18797,30 +18835,43 @@ $RefreshReg$(_c, "BookingStep1");
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
 },{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/fetch":"3BGhC","../components/TreatmentSelector":"9AGyt","../components/HairdresserSelector":"iEL96","../components/NextButton":"g7ESm","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"3BGhC":[function(require,module,exports,__globalThis) {
-/*const apiUrl = 'http://localhost/backend/src/Databashantering'; // Ange korrekt API URL*/ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchBehandlingar", ()=>fetchBehandlingar);
 parcelHelpers.export(exports, "fetchFrisorer", ()=>fetchFrisorer);
-const apiUrl = 'http://localhost:8080/Databashantering';
+parcelHelpers.export(exports, "fetchLedigaTider", ()=>fetchLedigaTider);
+const apiUrl = "http://localhost:8080/Databashantering";
 const fetchBehandlingar = async ()=>{
     try {
-        const response = await fetch(`${apiUrl}/getBehandlingar.php`);
-        if (!response.ok) throw new Error("N\xe5got gick fel vid h\xe4mtning av behandlingar");
-        const data = await response.json();
-        return data;
+        const res = await fetch(`${apiUrl}/getBehandlingar.php`);
+        if (!res.ok) throw new Error(`HTTP fel: ${res.status}`);
+        const data = await res.json();
+        return data; // Returnera de hämtade behandlingarna
     } catch (error) {
-        console.error(error);
+        console.error("Fel vid h\xe4mtning av behandlingar:", error);
+        return []; // Returnera tom array vid fel
     }
 };
-console.log('http://localhost:8080/Databashantering/getBehandlingar.php');
 const fetchFrisorer = async ()=>{
     try {
-        const response = await fetch(`${apiUrl}/getFrisorer.php`);
-        if (!response.ok) throw new Error("N\xe5got gick fel vid h\xe4mtning av fris\xf6rer");
-        const data = await response.json();
-        return data;
+        const res = await fetch(`${apiUrl}/getFrisorer.php`);
+        if (!res.ok) throw new Error(`HTTP fel: ${res.status}`);
+        const data = await res.json();
+        return data; // Returnera de hämtade frisörerna
     } catch (error) {
-        console.error(error);
+        console.error("Fel vid h\xe4mtning av fris\xf6rer:", error);
+        return []; // Returnera tom array vid fel
+    }
+};
+const fetchLedigaTider = async (frisorId, behandlingId, startDatum, slutDatum)=>{
+    try {
+        const res = await fetch(`${apiUrl}/getLedigaTider.php?frisor_id=${frisorId}&behandling_id=${behandlingId}&start=${startDatum}&slut=${slutDatum}`);
+        if (!res.ok) throw new Error("N\xe5got gick fel vid h\xe4mtning av tider");
+        const data = await res.json();
+        return data; // [{ date: '2025-04-21', times: ['09:00', '11:30', ...] }, ...]
+    } catch (error) {
+        console.error("Fel vid h\xe4mtning av lediga tider:", error);
+        return [];
     }
 };
 
@@ -18839,48 +18890,28 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 const TreatmentSelector = ({ behandlingar, selectedTreatment, onChange })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "V\xe4lj Behandling"
-            }, void 0, false, {
-                fileName: "src/components/TreatmentSelector.jsx",
-                lineNumber: 6,
-                columnNumber: 7
-            }, undefined),
-            behandlingar && behandlingar.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                value: selectedTreatment || "",
-                onChange: (e)=>onChange(e.target.value),
+        className: "treatment-selector",
+        children: behandlingar.map((behandling)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                        value: "",
-                        children: "-- V\xe4lj behandling --"
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "radio",
+                        name: "treatment",
+                        value: behandling.id,
+                        checked: selectedTreatment === behandling.id,
+                        onChange: (e)=>onChange(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/TreatmentSelector.jsx",
-                        lineNumber: 12,
+                        lineNumber: 8,
                         columnNumber: 11
                     }, undefined),
-                    behandlingar.map((behandling)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            value: behandling.id,
-                            children: behandling.namn
-                        }, behandling.id, false, {
-                            fileName: "src/components/TreatmentSelector.jsx",
-                            lineNumber: 14,
-                            columnNumber: 13
-                        }, undefined))
+                    behandling.name
                 ]
-            }, void 0, true, {
+            }, behandling.id, true, {
                 fileName: "src/components/TreatmentSelector.jsx",
-                lineNumber: 8,
+                lineNumber: 7,
                 columnNumber: 9
-            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "Inga behandlingar tillg\xe4ngliga"
-            }, void 0, false, {
-                fileName: "src/components/TreatmentSelector.jsx",
-                lineNumber: 20,
-                columnNumber: 9
-            }, undefined)
-        ]
-    }, void 0, true, {
+            }, undefined))
+    }, void 0, false, {
         fileName: "src/components/TreatmentSelector.jsx",
         lineNumber: 5,
         columnNumber: 5
@@ -18911,48 +18942,24 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 const HairdresserSelector = ({ frisorer, selectedHairdresser, onChange })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "V\xe4lj Fris\xf6r"
-            }, void 0, false, {
-                fileName: "src/components/HairdresserSelector.jsx",
-                lineNumber: 6,
-                columnNumber: 7
-            }, undefined),
-            frisorer && frisorer.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                value: selectedHairdresser || "",
-                onChange: (e)=>onChange(e.target.value),
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                        value: "",
-                        children: "-- V\xe4lj fris\xf6r --"
-                    }, void 0, false, {
-                        fileName: "src/components/HairdresserSelector.jsx",
-                        lineNumber: 12,
-                        columnNumber: 11
-                    }, undefined),
-                    frisorer.map((frisor)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            value: frisor.id,
-                            children: frisor.namn
-                        }, frisor.id, false, {
-                            fileName: "src/components/HairdresserSelector.jsx",
-                            lineNumber: 14,
-                            columnNumber: 13
-                        }, undefined))
-                ]
-            }, void 0, true, {
-                fileName: "src/components/HairdresserSelector.jsx",
-                lineNumber: 8,
-                columnNumber: 9
-            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "Inga fris\xf6rer tillg\xe4ngliga"
-            }, void 0, false, {
-                fileName: "src/components/HairdresserSelector.jsx",
-                lineNumber: 20,
-                columnNumber: 9
-            }, undefined)
-        ]
-    }, void 0, true, {
+        className: "hairdresser-selector",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+            value: selectedHairdresser,
+            onChange: (e)=>onChange(e.target.value),
+            children: frisorer.map((frisor)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                    value: frisor.id,
+                    children: frisor.name
+                }, frisor.id, false, {
+                    fileName: "src/components/HairdresserSelector.jsx",
+                    lineNumber: 8,
+                    columnNumber: 11
+                }, undefined))
+        }, void 0, false, {
+            fileName: "src/components/HairdresserSelector.jsx",
+            lineNumber: 6,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
         fileName: "src/components/HairdresserSelector.jsx",
         lineNumber: 5,
         columnNumber: 5
@@ -18986,6 +18993,7 @@ const NextButton = ({ onClick, disabled, label = "Forts\xe4tt" })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "next-button-container",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            type: "button",
             onClick: onClick,
             disabled: disabled,
             className: "next-button",
@@ -19027,6 +19035,7 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _bookingStep2Css = require("../styles/bookingStep2.css");
 var _nextButton = require("../components/NextButton");
 var _nextButtonDefault = parcelHelpers.interopDefault(_nextButton);
+var _fetch = require("../utils/fetch");
 var _s = $RefreshSig$();
 const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
     _s();
@@ -19034,6 +19043,8 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
     const [availableTimes, setAvailableTimes] = (0, _react.useState)([]);
     const [selectedSlot, setSelectedSlot] = (0, _react.useState)(null);
     const startDate = getStartOfWeek(new Date(), weekOffset);
+    const endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + 6);
     (0, _react.useEffect)(()=>{
         if (treatment && hairdresser) fetchAvailableTimes();
     }, [
@@ -19041,10 +19052,13 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
         hairdresser,
         weekOffset
     ]);
-    const fetchAvailableTimes = ()=>{
-        // Här kan du byta ut till ett riktigt API-anrop i framtiden
-        const simulatedData = generateDummyTimes(startDate);
-        setAvailableTimes(simulatedData);
+    const fetchAvailableTimes = async ()=>{
+        try {
+            const times = await (0, _fetch.fetchLedigaTider)(hairdresser.id, treatment.id, startDate.toISOString().split("T")[0], endDate.toISOString().split("T")[0]);
+            setAvailableTimes(times);
+        } catch (err) {
+            console.error("Kunde inte h\xe4mta tider", err);
+        }
     };
     const handleSelectSlot = (slot)=>{
         setSelectedSlot(slot);
@@ -19056,7 +19070,7 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
                 children: "V\xe4lj tid"
             }, void 0, false, {
                 fileName: "src/pages/BookingStep2.jsx",
-                lineNumber: 30,
+                lineNumber: 41,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19067,7 +19081,7 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
                         children: "Tillbaka"
                     }, void 0, false, {
                         fileName: "src/pages/BookingStep2.jsx",
-                        lineNumber: 33,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -19077,7 +19091,7 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/BookingStep2.jsx",
-                        lineNumber: 34,
+                        lineNumber: 45,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -19085,13 +19099,13 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
                         children: "Fram"
                     }, void 0, false, {
                         fileName: "src/pages/BookingStep2.jsx",
-                        lineNumber: 35,
+                        lineNumber: 46,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/BookingStep2.jsx",
-                lineNumber: 32,
+                lineNumber: 43,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19108,7 +19122,7 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
                                 })
                             }, void 0, false, {
                                 fileName: "src/pages/BookingStep2.jsx",
-                                lineNumber: 41,
+                                lineNumber: 52,
                                 columnNumber: 13
                             }, undefined),
                             day.times.map((time)=>{
@@ -19120,19 +19134,19 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
                                     children: time
                                 }, slotKey, false, {
                                     fileName: "src/pages/BookingStep2.jsx",
-                                    lineNumber: 52,
+                                    lineNumber: 63,
                                     columnNumber: 17
                                 }, undefined);
                             })
                         ]
                     }, day.date, true, {
                         fileName: "src/pages/BookingStep2.jsx",
-                        lineNumber: 40,
+                        lineNumber: 51,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/pages/BookingStep2.jsx",
-                lineNumber: 38,
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19143,7 +19157,7 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
                         children: "Tillbaka"
                     }, void 0, false, {
                         fileName: "src/pages/BookingStep2.jsx",
-                        lineNumber: 66,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _nextButtonDefault.default), {
@@ -19151,19 +19165,19 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
                         disabled: !selectedSlot
                     }, void 0, false, {
                         fileName: "src/pages/BookingStep2.jsx",
-                        lineNumber: 67,
+                        lineNumber: 78,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/BookingStep2.jsx",
-                lineNumber: 65,
+                lineNumber: 76,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/pages/BookingStep2.jsx",
-        lineNumber: 29,
+        lineNumber: 40,
         columnNumber: 5
     }, undefined);
 };
@@ -19177,22 +19191,6 @@ function getStartOfWeek(date, offset = 0) {
     d.setDate(d.getDate() - day + 1 + offset * 7); // Måndag = start
     return d;
 }
-// Dummy-funktion som genererar lediga tider mellan 09:00–17:00
-function generateDummyTimes(startDate) {
-    const result = [];
-    for(let i = 0; i < 7; i++){
-        const current = new Date(startDate);
-        current.setDate(current.getDate() + i);
-        const dateStr = current.toISOString().split("T")[0];
-        const times = [];
-        for(let hour = 9; hour <= 17; hour++)times.push(`${hour}:00`);
-        result.push({
-            date: dateStr,
-            times
-        });
-    }
-    return result;
-}
 var _c;
 $RefreshReg$(_c, "BookingStep2");
 
@@ -19201,6 +19199,6 @@ $RefreshReg$(_c, "BookingStep2");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styles/bookingStep2.css":"1w5MP","../components/NextButton":"g7ESm","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"1w5MP":[function() {},{}]},["hiyDA","gYcKb"], "gYcKb", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styles/bookingStep2.css":"1w5MP","../components/NextButton":"g7ESm","../utils/fetch":"3BGhC","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"1w5MP":[function() {},{}]},["hiyDA","gYcKb"], "gYcKb", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=frontend.ad93b51f.js.map

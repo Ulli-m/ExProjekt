@@ -1,11 +1,11 @@
+// App.jsx
 import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HeroImage from "./components/HeroImage";
 import StepIndicator from "./components/StepIndicator";
 import BookingStep1 from "./pages/BookingStep1";
-import BookingStep2 from "./pages/BookingStep2"; // Om du har den
-// Du kan lägga till fler steg senare
+import BookingStep2 from "./pages/BookingStep2";
 
 function App() {
   const [step, setStep] = useState(1);
@@ -35,7 +35,6 @@ function App() {
         <HeroImage />
         <StepIndicator currentStep={step} onStepClick={(val) => setStep(val)} />
 
-
         {step === 1 && (
           <BookingStep1
             treatment={treatment}
@@ -54,8 +53,6 @@ function App() {
             onNext={goToNextStep}
           />
         )}
-
-        {/* Fler steg kan läggas till här */}
       </main>
       <Footer />
     </>

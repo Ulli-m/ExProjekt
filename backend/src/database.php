@@ -1,18 +1,15 @@
 <?php
-$host = 'mysql';
-$port = 3306;
-$username = 'root';
-$password = 'rootpassword';
-$database = 'Booking';
+// I database.php
+$servername = "mysql"; // samma som container_name eller service name i docker-compose
+$username = "root";
+$password = "rootpassword";
+$dbname = "Booking";
 
-// Skapa anslutning
-$conn = new mysqli($host, $username, $password, $database, $port);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Kontrollera anslutning
+
+// Kontrollera om anslutningen lyckades
 if ($conn->connect_error) {
-    die("Anslutningen misslyckades: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
-
-// Du kan använda detta för att testa
-// echo "Ansluten till databasen!";
 ?>

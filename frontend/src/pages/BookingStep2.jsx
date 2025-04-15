@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/bookingStep2.css";
 import NextButton from "../components/NextButton";
+import { fetchLedigaTider } from "../utils/fetch";
 
 const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext }) => {
   const [weekOffset, setWeekOffset] = useState(0);
@@ -8,6 +9,8 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext }) => {
   const [selectedSlot, setSelectedSlot] = useState(null);
 
   const startDate = getStartOfWeek(new Date(), weekOffset);
+  const endDate = new Date(startDate);
+  endDate.setDate(startDate.getDate() + 6);
 
   useEffect(() => {
     if (treatment && hairdresser) {
@@ -15,10 +18,18 @@ const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext }) => {
     }
   }, [treatment, hairdresser, weekOffset]);
 
-  const fetchAvailableTimes = () => {
-    // Här kan du byta ut till ett riktigt API-anrop i framtiden
-    const simulatedData = generateDummyTimes(startDate);
-    setAvailableTimes(simulatedData);
+  const fetchAvailableTimes = async () => {
+    try {
+      const times = await fetchLedigaTider(
+        hairdresser.id,
+        treatment.id,
+        startDate.toISOString().split("T")[0],
+        endDate.toISOString().split("T")[0]
+      );
+      setAvailableTimes(times);
+    } catch (err) {
+      console.error("Kunde inte hämta tider", err);
+    }
   };
 
   const handleSelectSlot = (slot) => {
@@ -80,22 +91,6 @@ function getStartOfWeek(date, offset = 0) {
   return d;
 }
 
-// Dummy-funktion som genererar lediga tider mellan 09:00–17:00
-function generateDummyTimes(startDate) {
-  const result = [];
-  for (let i = 0; i < 7; i++) {
-    const current = new Date(startDate);
-    current.setDate(current.getDate() + i);
-    const dateStr = current.toISOString().split("T")[0];
 
-    const times = [];
-    for (let hour = 9; hour <= 17; hour++) {
-      times.push(`${hour}:00`);
-    }
-
-    result.push({ date: dateStr, times });
-  }
-  return result;
-}
 
 
