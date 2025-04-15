@@ -4,22 +4,28 @@ import Footer from "./components/Footer";
 import HeroImage from "./components/HeroImage";
 import StepIndicator from "./components/StepIndicator";
 import BookingStep1 from "./pages/BookingStep1";
-
+import BookingStep2 from "./pages/BookingStep2"; // Om du har den
+// Du kan lägga till fler steg senare
 
 function App() {
-  const [step, setStep] = useState(1);  // Spårar vilket steg användaren är på
+  const [step, setStep] = useState(1);
   const [treatment, setTreatment] = useState(null);
   const [hairdresser, setHairdresser] = useState(null);
 
-  const handleTreatmentChange = (treatment) => setTreatment(treatment);
-  const handleHairdresserChange = (hairdresser) => setHairdresser(hairdresser);
+  const handleTreatmentChange = (selectedTreatment) => {
+    setTreatment(selectedTreatment);
+  };
+
+  const handleHairdresserChange = (selectedHairdresser) => {
+    setHairdresser(selectedHairdresser);
+  };
 
   const goToNextStep = () => {
-    setStep((prevStep) => (prevStep < 5 ? prevStep + 1 : prevStep));  // Går till nästa steg
+    setStep((prev) => (prev < 5 ? prev + 1 : prev));
   };
 
   const goToPreviousStep = () => {
-    setStep((prevStep) => (prevStep > 1 ? prevStep - 1 : prevStep));  // Går till föregående steg
+    setStep((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
   return (
@@ -27,7 +33,9 @@ function App() {
       <Header />
       <main>
         <HeroImage />
-        <StepIndicator currentStep={step} />
+        <StepIndicator currentStep={step} onStepClick={(val) => setStep(val)} />
+
+
         {step === 1 && (
           <BookingStep1
             treatment={treatment}
@@ -37,8 +45,17 @@ function App() {
             onNext={goToNextStep}
           />
         )}
-        {step === 2 && <BookingStep2 onPrevious={goToPreviousStep} onNext={goToNextStep} />}
-        {/* Lägg till fler steg här */}
+
+        {step === 2 && (
+          <BookingStep2
+            treatment={treatment}
+            hairdresser={hairdresser}
+            onPrevious={goToPreviousStep}
+            onNext={goToNextStep}
+          />
+        )}
+
+        {/* Fler steg kan läggas till här */}
       </main>
       <Footer />
     </>
@@ -46,3 +63,4 @@ function App() {
 }
 
 export default App;
+

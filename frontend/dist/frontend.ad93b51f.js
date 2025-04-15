@@ -16116,39 +16116,47 @@ var _stepIndicator = require("./components/StepIndicator");
 var _stepIndicatorDefault = parcelHelpers.interopDefault(_stepIndicator);
 var _bookingStep1 = require("./pages/BookingStep1");
 var _bookingStep1Default = parcelHelpers.interopDefault(_bookingStep1);
+var _bookingStep2 = require("./pages/BookingStep2"); // Om du har den
+var _bookingStep2Default = parcelHelpers.interopDefault(_bookingStep2);
 var _s = $RefreshSig$();
+// Du kan lägga till fler steg senare
 function App() {
     _s();
-    const [step, setStep] = (0, _react.useState)(1); // Spårar vilket steg användaren är på
+    const [step, setStep] = (0, _react.useState)(1);
     const [treatment, setTreatment] = (0, _react.useState)(null);
     const [hairdresser, setHairdresser] = (0, _react.useState)(null);
-    const handleTreatmentChange = (treatment)=>setTreatment(treatment);
-    const handleHairdresserChange = (hairdresser)=>setHairdresser(hairdresser);
+    const handleTreatmentChange = (selectedTreatment)=>{
+        setTreatment(selectedTreatment);
+    };
+    const handleHairdresserChange = (selectedHairdresser)=>{
+        setHairdresser(selectedHairdresser);
+    };
     const goToNextStep = ()=>{
-        setStep((prevStep)=>prevStep < 5 ? prevStep + 1 : prevStep); // Går till nästa steg
+        setStep((prev)=>prev < 5 ? prev + 1 : prev);
     };
     const goToPreviousStep = ()=>{
-        setStep((prevStep)=>prevStep > 1 ? prevStep - 1 : prevStep); // Går till föregående steg
+        setStep((prev)=>prev > 1 ? prev - 1 : prev);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                 fileName: "src/App.jsx",
-                lineNumber: 27,
+                lineNumber: 33,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _heroImageDefault.default), {}, void 0, false, {
                         fileName: "src/App.jsx",
-                        lineNumber: 29,
+                        lineNumber: 35,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _stepIndicatorDefault.default), {
-                        currentStep: step
+                        currentStep: step,
+                        onStepClick: (val)=>setStep(val)
                     }, void 0, false, {
                         fileName: "src/App.jsx",
-                        lineNumber: 30,
+                        lineNumber: 36,
                         columnNumber: 9
                     }, this),
                     step === 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookingStep1Default.default), {
@@ -16159,26 +16167,28 @@ function App() {
                         onNext: goToNextStep
                     }, void 0, false, {
                         fileName: "src/App.jsx",
-                        lineNumber: 32,
+                        lineNumber: 40,
                         columnNumber: 11
                     }, this),
-                    step === 2 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(BookingStep2, {
+                    step === 2 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookingStep2Default.default), {
+                        treatment: treatment,
+                        hairdresser: hairdresser,
                         onPrevious: goToPreviousStep,
                         onNext: goToNextStep
                     }, void 0, false, {
                         fileName: "src/App.jsx",
-                        lineNumber: 40,
-                        columnNumber: 24
+                        lineNumber: 50,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/App.jsx",
-                lineNumber: 28,
+                lineNumber: 34,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                 fileName: "src/App.jsx",
-                lineNumber: 43,
+                lineNumber: 60,
                 columnNumber: 7
             }, this)
         ]
@@ -16195,7 +16205,7 @@ $RefreshReg$(_c, "App");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./components/Header":"8BCUx","./components/Footer":"lU1xT","./components/HeroImage":"gruAe","./components/StepIndicator":"6ldzK","./pages/BookingStep1":"hzJdA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"8BCUx":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./components/Header":"8BCUx","./components/Footer":"lU1xT","./components/HeroImage":"gruAe","./components/StepIndicator":"6ldzK","./pages/BookingStep1":"hzJdA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./pages/BookingStep2":"iyPQ4"}],"8BCUx":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$bb7d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$bb7d.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -18625,30 +18635,59 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _stepindicatorCss = require("../styles/stepindicator.css");
-function StepIndicator({ currentStep }) {
+function StepIndicator({ currentStep, onStepClick }) {
     const steps = [
         1,
         2,
         3,
         4,
         5
-    ]; // De olika stegen i processen
+    ];
+    const isDisabled = currentStep === 5;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "step-indicator",
-        children: steps.map((step)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: `step ${currentStep >= step ? "active" : ""}`,
+        children: steps.map((step)=>{
+            let className = "step-circle";
+            if (step < currentStep) className += " completed";
+            else if (step === currentStep) className += " current";
+            const handleClick = ()=>{
+                if (!isDisabled && step < 5 && step !== currentStep) onStepClick(step);
+            };
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "step-wrapper",
                 children: [
-                    "Steg ",
-                    step
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: className,
+                        onClick: handleClick,
+                        disabled: isDisabled || step === currentStep,
+                        title: `Steg ${step}`,
+                        children: step
+                    }, void 0, false, {
+                        fileName: "src/components/StepIndicator.jsx",
+                        lineNumber: 23,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "step-label",
+                        children: [
+                            "Steg ",
+                            step
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/StepIndicator.jsx",
+                        lineNumber: 31,
+                        columnNumber: 13
+                    }, this)
                 ]
             }, step, true, {
                 fileName: "src/components/StepIndicator.jsx",
-                lineNumber: 10,
-                columnNumber: 9
-            }, this))
+                lineNumber: 22,
+                columnNumber: 11
+            }, this);
+        })
     }, void 0, false, {
         fileName: "src/components/StepIndicator.jsx",
-        lineNumber: 8,
+        lineNumber: 9,
         columnNumber: 5
     }, this);
 }
@@ -18675,111 +18714,75 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _fetch = require("../utils/fetch"); // Importera fetch-funktionerna
+var _fetch = require("../utils/fetch");
+var _treatmentSelector = require("../components/TreatmentSelector");
+var _treatmentSelectorDefault = parcelHelpers.interopDefault(_treatmentSelector);
+var _hairdresserSelector = require("../components/HairdresserSelector");
+var _hairdresserSelectorDefault = parcelHelpers.interopDefault(_hairdresserSelector);
+var _nextButton = require("../components/NextButton");
+var _nextButtonDefault = parcelHelpers.interopDefault(_nextButton);
 var _s = $RefreshSig$();
-const BookingStep1 = ()=>{
+const BookingStep1 = ({ treatment, hairdresser, onTreatmentChange, onHairdresserChange, onNext })=>{
     _s();
     const [behandlingar, setBehandlingar] = (0, _react.useState)([]);
     const [frisorer, setFrisorer] = (0, _react.useState)([]);
-    const [loading, setLoading] = (0, _react.useState)(true); // Lägg till en loading state
+    const [loading, setLoading] = (0, _react.useState)(true);
     (0, _react.useEffect)(()=>{
-        // Hämta behandlingar
-        (0, _fetch.fetchBehandlingar)().then((data)=>{
-            setBehandlingar(data);
-        }).finally(()=>setLoading(false)); // När datan är hämtad, sätt loading till false
-        // Hämta frisörer
-        (0, _fetch.fetchFrisorer)().then((data)=>setFrisorer(data)).finally(()=>setLoading(false));
+        Promise.all([
+            (0, _fetch.fetchBehandlingar)(),
+            (0, _fetch.fetchFrisorer)()
+        ]).then(([behandlingData, frisorData])=>{
+            setBehandlingar(behandlingData || []);
+            setFrisorer(frisorData || []);
+            setLoading(false);
+        });
     }, []);
     if (loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "Laddar..."
     }, void 0, false, {
         fileName: "src/pages/BookingStep1.jsx",
-        lineNumber: 24,
-        columnNumber: 12
-    }, undefined); // Visa laddningstext om datan hämtas
+        lineNumber: 27,
+        columnNumber: 23
+    }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                 children: "Bokningssteg 1"
             }, void 0, false, {
                 fileName: "src/pages/BookingStep1.jsx",
-                lineNumber: 29,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        children: "V\xe4lj Behandling"
-                    }, void 0, false, {
-                        fileName: "src/pages/BookingStep1.jsx",
-                        lineNumber: 32,
-                        columnNumber: 9
-                    }, undefined),
-                    behandlingar && behandlingar.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                        children: behandlingar.map((behandling)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                value: behandling.id,
-                                children: behandling.namn
-                            }, behandling.id, false, {
-                                fileName: "src/pages/BookingStep1.jsx",
-                                lineNumber: 37,
-                                columnNumber: 15
-                            }, undefined))
-                    }, void 0, false, {
-                        fileName: "src/pages/BookingStep1.jsx",
-                        lineNumber: 35,
-                        columnNumber: 11
-                    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: "Inga behandlingar tillg\xe4ngliga"
-                    }, void 0, false, {
-                        fileName: "src/pages/BookingStep1.jsx",
-                        lineNumber: 43,
-                        columnNumber: 11
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/BookingStep1.jsx",
                 lineNumber: 31,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        children: "V\xe4lj Fris\xf6r"
-                    }, void 0, false, {
-                        fileName: "src/pages/BookingStep1.jsx",
-                        lineNumber: 48,
-                        columnNumber: 9
-                    }, undefined),
-                    frisorer && frisorer.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                        children: frisorer.map((frisor)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                value: frisor.id,
-                                children: frisor.namn
-                            }, frisor.id, false, {
-                                fileName: "src/pages/BookingStep1.jsx",
-                                lineNumber: 53,
-                                columnNumber: 15
-                            }, undefined))
-                    }, void 0, false, {
-                        fileName: "src/pages/BookingStep1.jsx",
-                        lineNumber: 51,
-                        columnNumber: 11
-                    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: "Inga fris\xf6rer tillg\xe4ngliga"
-                    }, void 0, false, {
-                        fileName: "src/pages/BookingStep1.jsx",
-                        lineNumber: 59,
-                        columnNumber: 11
-                    }, undefined)
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _treatmentSelectorDefault.default), {
+                behandlingar: behandlingar,
+                selectedTreatment: treatment,
+                onChange: onTreatmentChange
+            }, void 0, false, {
                 fileName: "src/pages/BookingStep1.jsx",
-                lineNumber: 47,
+                lineNumber: 33,
                 columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _hairdresserSelectorDefault.default), {
+                frisorer: frisorer,
+                selectedHairdresser: hairdresser,
+                onChange: onHairdresserChange
+            }, void 0, false, {
+                fileName: "src/pages/BookingStep1.jsx",
+                lineNumber: 39,
+                columnNumber: 7
+            }, undefined),
+            treatment && hairdresser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _nextButtonDefault.default), {
+                onClick: onNext,
+                label: "Forts\xe4tt"
+            }, void 0, false, {
+                fileName: "src/pages/BookingStep1.jsx",
+                lineNumber: 46,
+                columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/pages/BookingStep1.jsx",
-        lineNumber: 28,
+        lineNumber: 30,
         columnNumber: 5
     }, undefined);
 };
@@ -18794,7 +18797,7 @@ $RefreshReg$(_c, "BookingStep1");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/fetch":"3BGhC","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"3BGhC":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/fetch":"3BGhC","../components/TreatmentSelector":"9AGyt","../components/HairdresserSelector":"iEL96","../components/NextButton":"g7ESm","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"3BGhC":[function(require,module,exports,__globalThis) {
 /*const apiUrl = 'http://localhost/backend/src/Databashantering'; // Ange korrekt API URL*/ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchBehandlingar", ()=>fetchBehandlingar);
@@ -18822,6 +18825,240 @@ const fetchFrisorer = async ()=>{
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["hiyDA","gYcKb"], "gYcKb", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9AGyt":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$a61f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$a61f.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a61f.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const TreatmentSelector = ({ behandlingar, selectedTreatment, onChange })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "V\xe4lj Behandling"
+            }, void 0, false, {
+                fileName: "src/components/TreatmentSelector.jsx",
+                lineNumber: 6,
+                columnNumber: 7
+            }, undefined),
+            behandlingar && behandlingar.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                value: selectedTreatment || "",
+                onChange: (e)=>onChange(e.target.value),
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                        value: "",
+                        children: "-- V\xe4lj behandling --"
+                    }, void 0, false, {
+                        fileName: "src/components/TreatmentSelector.jsx",
+                        lineNumber: 12,
+                        columnNumber: 11
+                    }, undefined),
+                    behandlingar.map((behandling)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            value: behandling.id,
+                            children: behandling.namn
+                        }, behandling.id, false, {
+                            fileName: "src/components/TreatmentSelector.jsx",
+                            lineNumber: 14,
+                            columnNumber: 13
+                        }, undefined))
+                ]
+            }, void 0, true, {
+                fileName: "src/components/TreatmentSelector.jsx",
+                lineNumber: 8,
+                columnNumber: 9
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "Inga behandlingar tillg\xe4ngliga"
+            }, void 0, false, {
+                fileName: "src/components/TreatmentSelector.jsx",
+                lineNumber: 20,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/TreatmentSelector.jsx",
+        lineNumber: 5,
+        columnNumber: 5
+    }, undefined);
+};
+_c = TreatmentSelector;
+exports.default = TreatmentSelector;
+var _c;
+$RefreshReg$(_c, "TreatmentSelector");
+
+  $parcel$ReactRefreshHelpers$a61f.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"iEL96":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$0532 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$0532.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$0532.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const HairdresserSelector = ({ frisorer, selectedHairdresser, onChange })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "V\xe4lj Fris\xf6r"
+            }, void 0, false, {
+                fileName: "src/components/HairdresserSelector.jsx",
+                lineNumber: 6,
+                columnNumber: 7
+            }, undefined),
+            frisorer && frisorer.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                value: selectedHairdresser || "",
+                onChange: (e)=>onChange(e.target.value),
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                        value: "",
+                        children: "-- V\xe4lj fris\xf6r --"
+                    }, void 0, false, {
+                        fileName: "src/components/HairdresserSelector.jsx",
+                        lineNumber: 12,
+                        columnNumber: 11
+                    }, undefined),
+                    frisorer.map((frisor)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            value: frisor.id,
+                            children: frisor.namn
+                        }, frisor.id, false, {
+                            fileName: "src/components/HairdresserSelector.jsx",
+                            lineNumber: 14,
+                            columnNumber: 13
+                        }, undefined))
+                ]
+            }, void 0, true, {
+                fileName: "src/components/HairdresserSelector.jsx",
+                lineNumber: 8,
+                columnNumber: 9
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "Inga fris\xf6rer tillg\xe4ngliga"
+            }, void 0, false, {
+                fileName: "src/components/HairdresserSelector.jsx",
+                lineNumber: 20,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/HairdresserSelector.jsx",
+        lineNumber: 5,
+        columnNumber: 5
+    }, undefined);
+};
+_c = HairdresserSelector;
+exports.default = HairdresserSelector;
+var _c;
+$RefreshReg$(_c, "HairdresserSelector");
+
+  $parcel$ReactRefreshHelpers$0532.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"g7ESm":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5881 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$5881.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5881.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _nextButtonCss = require("../styles/nextButton.css");
+const NextButton = ({ onClick, disabled, label = "Forts\xe4tt" })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "next-button-container",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            onClick: onClick,
+            disabled: disabled,
+            className: "next-button",
+            children: label
+        }, void 0, false, {
+            fileName: "src/components/NextButton.jsx",
+            lineNumber: 7,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/NextButton.jsx",
+        lineNumber: 6,
+        columnNumber: 5
+    }, undefined);
+};
+_c = NextButton;
+exports.default = NextButton;
+var _c;
+$RefreshReg$(_c, "NextButton");
+
+  $parcel$ReactRefreshHelpers$5881.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styles/nextButton.css":"2IKsz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2IKsz":[function() {},{}],"iyPQ4":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$4eef = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$4eef.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$4eef.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const BookingStep2 = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: "Bokningssteg 2"
+            }, void 0, false, {
+                fileName: "src/pages/BookingStep2.jsx",
+                lineNumber: 6,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "H\xe4r kommer kalendern och tillg\xe4ngliga tider!"
+            }, void 0, false, {
+                fileName: "src/pages/BookingStep2.jsx",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/BookingStep2.jsx",
+        lineNumber: 5,
+        columnNumber: 5
+    }, undefined);
+};
+_c = BookingStep2;
+exports.default = BookingStep2;
+var _c;
+$RefreshReg$(_c, "BookingStep2");
+
+  $parcel$ReactRefreshHelpers$4eef.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["hiyDA","gYcKb"], "gYcKb", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=frontend.ad93b51f.js.map

@@ -4,4 +4,75 @@
   padding: 20px;
   font-family: sans-serif;
 }
+
+.step-indicator {
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+  display: flex;
+}
+
+.step-item {
+  text-align: center;
+  cursor: pointer;
+}
+
+.step-item .step-circle {
+  color: #fff;
+  background-color: #d3d3d3;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  line-height: 40px;
+  transition: background-color .3s, transform .3s;
+}
+
+.step-item .step-label {
+  font-size: 14px;
+}
+
+.step-item.completed .step-circle {
+  background-color: #4caf50;
+}
+
+.step-item.active .step-circle {
+  background-color: #2196f3;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #2196f3;
+}
+
+.step-item:hover .step-circle {
+  opacity: .8;
+}
+
+.step-item.inactive .step-circle {
+  background-color: #d3d3d3;
+}
+
+.next-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.next-button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  transition: background-color .3s;
+}
+
+.next-button:hover {
+  background-color: #333;
+}
+
+.next-button:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
 /*# sourceMappingURL=frontend.9f367d21.css.map */
