@@ -1,46 +1,60 @@
-.step-indicator {
+  .step-indicator {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin: 30px 0;
+    gap: 40px;
+    margin: 40px 0;
   }
   
   .step-item {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
+    user-select: none;
   }
   
-  .step-item .step-circle {
-    width: 40px;
-    height: 40px;
+  .step-circle {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: lightgray;
     color: white;
-    line-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
-    margin-bottom: 5px;
+    font-size: 18px;
     transition: background-color 0.3s, transform 0.3s;
   }
   
-  .step-item .step-label {
+  .step-label {
+    margin-top: 8px;
     font-size: 14px;
+    color: #333;
   }
   
+  /* Slutfört steg (grönt) */
   .step-item.completed .step-circle {
-    background-color: #4caf50; /* grön */
+    background-color: #4caf50;
   }
   
+  /* Nuvarande steg (blått med glow) */
   .step-item.active .step-circle {
-    background-color: #2196f3; /* blå */
+    background-color: #2196f3;
     transform: scale(1.1);
-    box-shadow: 0 0 10px #2196f3;
+    box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
   }
   
-  .step-item:hover .step-circle {
-    opacity: 0.8;
-  }
-  
+  /* Inaktiva steg (grått) */
   .step-item.inactive .step-circle {
-    background-color: lightgray; /* Inaktiv grå */
+    background-color: lightgray;
   }
+  
+  /* Hovrings-effekt för klickbara steg */
+  .step-item:not(.active):hover .step-circle {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+  
+  
   

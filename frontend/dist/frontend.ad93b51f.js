@@ -18635,7 +18635,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _stepindicatorCss = require("../styles/stepindicator.css");
-function StepIndicator({ currentStep, onStepClick }) {
+const StepIndicator = ({ currentStep, onStepClick })=>{
     const steps = [
         1,
         2,
@@ -18643,31 +18643,30 @@ function StepIndicator({ currentStep, onStepClick }) {
         4,
         5
     ];
-    const isDisabled = currentStep === 5;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "step-indicator",
         children: steps.map((step)=>{
-            let className = "step-circle";
-            if (step < currentStep) className += " completed";
-            else if (step === currentStep) className += " current";
+            // Avgör om detta är ett slutfört, aktivt eller kommande steg
+            const isCompleted = step < currentStep;
+            const isActive = step === currentStep;
+            const isInactive = step > currentStep;
+            // Förhindra klick när man är på steg 5 (bokningen bekräftad)
             const handleClick = ()=>{
-                if (!isDisabled && step < 5 && step !== currentStep) onStepClick(step);
+                if (onStepClick && currentStep !== 5) onStepClick(step);
             };
             return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "step-wrapper",
+                className: `step-item ${isCompleted ? "completed" : isActive ? "active" : "inactive"}`,
+                onClick: handleClick,
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: className,
-                        onClick: handleClick,
-                        disabled: isDisabled || step === currentStep,
-                        title: `Steg ${step}`,
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "step-circle",
                         children: step
                     }, void 0, false, {
                         fileName: "src/components/StepIndicator.jsx",
-                        lineNumber: 23,
+                        lineNumber: 30,
                         columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "step-label",
                         children: [
                             "Steg ",
@@ -18677,20 +18676,20 @@ function StepIndicator({ currentStep, onStepClick }) {
                         fileName: "src/components/StepIndicator.jsx",
                         lineNumber: 31,
                         columnNumber: 13
-                    }, this)
+                    }, undefined)
                 ]
             }, step, true, {
                 fileName: "src/components/StepIndicator.jsx",
-                lineNumber: 22,
+                lineNumber: 23,
                 columnNumber: 11
-            }, this);
+            }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/StepIndicator.jsx",
-        lineNumber: 9,
+        lineNumber: 8,
         columnNumber: 5
-    }, this);
-}
+    }, undefined);
+};
 _c = StepIndicator;
 exports.default = StepIndicator;
 var _c;
@@ -18701,7 +18700,7 @@ $RefreshReg$(_c, "StepIndicator");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../styles/stepindicator.css":"6LgK5"}],"6LgK5":[function() {},{}],"hzJdA":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styles/stepindicator.css":"6LgK5","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"6LgK5":[function() {},{}],"hzJdA":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$c545 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$c545.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -19025,32 +19024,175 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const BookingStep2 = ()=>{
+var _bookingStep2Css = require("../styles/bookingStep2.css");
+var _nextButton = require("../components/NextButton");
+var _nextButtonDefault = parcelHelpers.interopDefault(_nextButton);
+var _s = $RefreshSig$();
+const BookingStep2 = ({ treatment, hairdresser, onPrevious, onNext })=>{
+    _s();
+    const [weekOffset, setWeekOffset] = (0, _react.useState)(0);
+    const [availableTimes, setAvailableTimes] = (0, _react.useState)([]);
+    const [selectedSlot, setSelectedSlot] = (0, _react.useState)(null);
+    const startDate = getStartOfWeek(new Date(), weekOffset);
+    (0, _react.useEffect)(()=>{
+        if (treatment && hairdresser) fetchAvailableTimes();
+    }, [
+        treatment,
+        hairdresser,
+        weekOffset
+    ]);
+    const fetchAvailableTimes = ()=>{
+        // Här kan du byta ut till ett riktigt API-anrop i framtiden
+        const simulatedData = generateDummyTimes(startDate);
+        setAvailableTimes(simulatedData);
+    };
+    const handleSelectSlot = (slot)=>{
+        setSelectedSlot(slot);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "booking-step-2",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "Bokningssteg 2"
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "V\xe4lj tid"
             }, void 0, false, {
                 fileName: "src/pages/BookingStep2.jsx",
-                lineNumber: 6,
+                lineNumber: 30,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "H\xe4r kommer kalendern och tillg\xe4ngliga tider!"
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "week-navigation",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>setWeekOffset(weekOffset - 1),
+                        children: "Tillbaka"
+                    }, void 0, false, {
+                        fileName: "src/pages/BookingStep2.jsx",
+                        lineNumber: 33,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: [
+                            "Vecka som b\xf6rjar ",
+                            startDate.toLocaleDateString("sv-SE")
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/BookingStep2.jsx",
+                        lineNumber: 34,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>setWeekOffset(weekOffset + 1),
+                        children: "Fram"
+                    }, void 0, false, {
+                        fileName: "src/pages/BookingStep2.jsx",
+                        lineNumber: 35,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/BookingStep2.jsx",
+                lineNumber: 32,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "calendar-grid",
+                children: availableTimes.map((day)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "day-column",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "day-header",
+                                children: new Date(day.date).toLocaleDateString("sv-SE", {
+                                    weekday: "short",
+                                    day: "numeric",
+                                    month: "numeric"
+                                })
+                            }, void 0, false, {
+                                fileName: "src/pages/BookingStep2.jsx",
+                                lineNumber: 41,
+                                columnNumber: 13
+                            }, undefined),
+                            day.times.map((time)=>{
+                                const slotKey = `${day.date}-${time}`;
+                                const isSelected = selectedSlot === slotKey;
+                                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    className: `time-slot ${isSelected ? "selected" : ""}`,
+                                    onClick: ()=>handleSelectSlot(slotKey),
+                                    children: time
+                                }, slotKey, false, {
+                                    fileName: "src/pages/BookingStep2.jsx",
+                                    lineNumber: 52,
+                                    columnNumber: 17
+                                }, undefined);
+                            })
+                        ]
+                    }, day.date, true, {
+                        fileName: "src/pages/BookingStep2.jsx",
+                        lineNumber: 40,
+                        columnNumber: 11
+                    }, undefined))
             }, void 0, false, {
                 fileName: "src/pages/BookingStep2.jsx",
-                lineNumber: 7,
+                lineNumber: 38,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "step-buttons",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: onPrevious,
+                        children: "Tillbaka"
+                    }, void 0, false, {
+                        fileName: "src/pages/BookingStep2.jsx",
+                        lineNumber: 66,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _nextButtonDefault.default), {
+                        onClick: onNext,
+                        disabled: !selectedSlot
+                    }, void 0, false, {
+                        fileName: "src/pages/BookingStep2.jsx",
+                        lineNumber: 67,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/BookingStep2.jsx",
+                lineNumber: 65,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/pages/BookingStep2.jsx",
-        lineNumber: 5,
+        lineNumber: 29,
         columnNumber: 5
     }, undefined);
 };
+_s(BookingStep2, "DNHMzru2mQ1xOFvcS7uNmBoCDLw=");
 _c = BookingStep2;
 exports.default = BookingStep2;
+// Hjälpfunktion: Få måndagen för veckan med offset
+function getStartOfWeek(date, offset = 0) {
+    const d = new Date(date);
+    const day = d.getDay() === 0 ? 7 : d.getDay(); // Söndag = 7
+    d.setDate(d.getDate() - day + 1 + offset * 7); // Måndag = start
+    return d;
+}
+// Dummy-funktion som genererar lediga tider mellan 09:00–17:00
+function generateDummyTimes(startDate) {
+    const result = [];
+    for(let i = 0; i < 7; i++){
+        const current = new Date(startDate);
+        current.setDate(current.getDate() + i);
+        const dateStr = current.toISOString().split("T")[0];
+        const times = [];
+        for(let hour = 9; hour <= 17; hour++)times.push(`${hour}:00`);
+        result.push({
+            date: dateStr,
+            times
+        });
+    }
+    return result;
+}
 var _c;
 $RefreshReg$(_c, "BookingStep2");
 
@@ -19059,6 +19201,6 @@ $RefreshReg$(_c, "BookingStep2");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["hiyDA","gYcKb"], "gYcKb", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../styles/bookingStep2.css":"1w5MP","../components/NextButton":"g7ESm","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"1w5MP":[function() {},{}]},["hiyDA","gYcKb"], "gYcKb", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=frontend.ad93b51f.js.map

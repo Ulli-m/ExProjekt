@@ -1,40 +1,41 @@
 import React from "react";
 import "../styles/stepindicator.css";
 
-function StepIndicator({ currentStep, onStepClick }) {
+const StepIndicator = ({ currentStep, onStepClick }) => {
   const steps = [1, 2, 3, 4, 5];
-  const isDisabled = currentStep === 5;
 
   return (
     <div className="step-indicator">
       {steps.map((step) => {
-        let className = "step-circle";
-        if (step < currentStep) className += " completed";
-        else if (step === currentStep) className += " current";
+        // Avgör om detta är ett slutfört, aktivt eller kommande steg
+        const isCompleted = step < currentStep;
+        const isActive = step === currentStep;
+        const isInactive = step > currentStep;
 
+        // Förhindra klick när man är på steg 5 (bokningen bekräftad)
         const handleClick = () => {
-          if (!isDisabled && step < 5 && step !== currentStep) {
+          if (onStepClick && currentStep !== 5) {
             onStepClick(step);
           }
         };
 
         return (
-          <div key={step} className="step-wrapper">
-            <button
-              className={className}
-              onClick={handleClick}
-              disabled={isDisabled || step === currentStep}
-              title={`Steg ${step}`}
-            >
-              {step}
-            </button>
-            <span className="step-label">Steg {step}</span>
+          <div
+            key={step}
+            className={`step-item ${
+              isCompleted ? "completed" : isActive ? "active" : "inactive"
+            }`}
+            onClick={handleClick}
+          >
+            <div className="step-circle">{step}</div>
+            <div className="step-label">Steg {step}</div>
           </div>
         );
       })}
     </div>
   );
-}
+};
 
 export default StepIndicator;
+
 

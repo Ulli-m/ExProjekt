@@ -1,0 +1,113 @@
+/* bookingStep2.css */
+
+.booking-step-2 {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .booking-step-2 h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .week-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .week-navigation button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+  }
+  
+  .week-navigation button:hover {
+    background-color: #45a049;
+  }
+  
+  .week-navigation span {
+    font-size: 16px;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .day-column {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .day-header {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .time-slot {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .time-slot:hover {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .time-slot.selected {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .step-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .step-buttons button {
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 45%;
+  }
+  
+  .step-buttons button:hover {
+    background-color: #1976d2;
+  }
+  
+  .step-buttons button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+  
